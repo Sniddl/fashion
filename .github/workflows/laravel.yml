@@ -31,6 +31,5 @@ jobs:
         run: vendor/bin/phpunit
       - name: Commit Notifier Script
         env:
-          DISCORD_DATA: ${{ EVENT_PAYLOAD }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: node commit_notifier.js
