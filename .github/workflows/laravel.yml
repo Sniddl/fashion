@@ -34,4 +34,6 @@ jobs:
       - name: Commit Notifier Script
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: ./commit_notifier.js
+        run: |
+          echo ${#DISCORD_WEBHOOK}
+          ./commit_notifier.js
