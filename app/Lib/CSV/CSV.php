@@ -13,6 +13,7 @@ class CSV
 {
     public UploadedFile $file;
     public Collection $lines;
+    public Collection $header;
 
     public function __construct()
     {
