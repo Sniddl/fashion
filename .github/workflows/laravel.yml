@@ -29,9 +29,5 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: vendor/bin/phpunit
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        uses: Ilshidur/action-discord@master
-        with:
-          args: "The project {{ JSON.stringify(EVENT_PAYLOAD.commits) }} has been deployed."
+      - name: Commit Notifier Script
+        run: node commit_notifier.js {{ Buffer.from(JSON.stringify(EVENT_PAYLOAD.commits)).toString('base64') }} ${{ secrets.DISCORD_WEBHOOK }}
