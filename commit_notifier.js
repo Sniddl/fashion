@@ -1,3 +1,4 @@
+const fs = require("fs");
 const args = process.argv.slice(2);
 
 const eventContent = fs.readFileSync(process.env.GITHUB_EVENT_PATH, "utf8");
