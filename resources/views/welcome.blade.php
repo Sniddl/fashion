@@ -94,6 +94,12 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+
+                <form action="/upload/csv" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="csv" id="csv">
+                    <input type="submit" value="upload">
+                </form>
             </div>
         </div>
     </body>
