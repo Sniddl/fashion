@@ -37,3 +37,5 @@ jobs:
         run: |
           echo ${#DISCORD_WEBHOOK}
           ./commit_notifier.js
+        with:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}

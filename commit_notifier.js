@@ -7,7 +7,7 @@ const args = process.argv.slice(2);
 
 const eventContent = fs.readFileSync(process.env.GITHUB_EVENT_PATH, "utf8");
 const json = JSON.parse(eventContent);
-const hook = process.env.DISCORD_WEBHOOK + "?wait=true";
+let url = process.env.DISCORD_WEBHOOK;
 
 const payload = JSON.stringify({
     content: `Successfully ran '${process.env.GITHUB_JOB}' for '${process.env.GITHUB_REPOSITORY}'\nA comparison can be found at ${json.compare}`,
@@ -34,17 +34,18 @@ const payload = JSON.stringify({
     })
 });
 
-axios
-    .post(hook, payload, {
+(async () => {
+    console.log("Sending message ...");
+    await axios.post(`${url}?wait=true`, payload, {
         headers: {
             "Content-Type": "application/json",
             "X-GitHub-Event": process.env.GITHUB_EVENT_NAME || "push"
         }
-    })
-    .then(res => {
-        console.log(`statusCode: ${res.statusCode}`);
-        console.log(res);
-    })
-    .catch(error => {
-        console.error(error);
     });
+    console.log("Message sent ! Shutting down ...");
+    process.exit(0);
+})().catch(error => {
+    console.error("Error :", err.response.status, err.response.statusText);
+    console.error("Message :", err.response ? err.response.data : err.message);
+    process.exit(1);
+});
