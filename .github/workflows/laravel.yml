@@ -19,7 +19,7 @@ jobs:
           node-version: 12.x
 
       - name: Install NPM Dependencies (prod)
-        run: npm install --frozen-lockfile --production
+        run: npm install --frozen-lockfile
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
