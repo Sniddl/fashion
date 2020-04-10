@@ -46,7 +46,7 @@ const payload = JSON.stringify({
     });
     console.log("Message sent ! Shutting down ...");
     process.exit(0);
-})().catch(error => {
+})().catch(err => {
     console.error("Error :", err.response.status, err.response.statusText);
     console.error("Message :", err.response ? err.response.data : err.message);
     process.exit(1);
