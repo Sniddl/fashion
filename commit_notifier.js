@@ -5,7 +5,7 @@ const axios = require("axios");
 
 const args = process.argv.slice(2);
 
-console.log(`${args[0]}/webhook`);
+// console.log(`${args[0]}/webhook`);
 
 const eventContent = fs.readFileSync(process.env.GITHUB_EVENT_PATH, "utf8");
 const json = JSON.parse(eventContent);
