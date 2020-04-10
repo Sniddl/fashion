@@ -8,9 +8,7 @@ class FileUploadController extends Controller
 {
     public function csv(Request $request)
     {
-        $path = $request->file('csv')->store('test');
-
-        // return $path;
-        dd("hello");
+        $path = $request->file('csv')->store('csv');
+        return $path;
     }
 }
