@@ -60,6 +60,7 @@ class CSV
 
     private function parseHeader()
     {
+        //
         $this->header = $this->lines->first();
         $this->lines = $this->lines->except(0);
         return $this;
