@@ -2,7 +2,10 @@
 
 namespace App\Lib\CSV;
 
+use App\Lib\URL\URL;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class CSVFactory
 {
@@ -16,5 +19,17 @@ class CSVFactory
     {
         $csv = new CSVParser;
         return $csv->fromFile($file);
+    }
+
+    /**
+     * Load CSV file from Google Doc link.
+     * 
+     * @param App\Lib\URL\Url $url
+     * @return App\Lib\CSV\CSVParser
+     */
+    public function fromGoogle(URL $url)
+    {
+        $csv = new CSVParser;
+        return $csv->fromGoogle($url);
     }
 }

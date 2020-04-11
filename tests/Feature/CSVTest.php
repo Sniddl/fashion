@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Facades\CSV;
+use App\Facades\URL;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
@@ -40,7 +41,6 @@ class CSVTest extends TestCase
      */
     public function test_csv_parse()
     {
-        // create a fake file
         Storage::fake('test');
 
         $file = UploadedFile::fake()
@@ -68,21 +68,23 @@ class CSVTest extends TestCase
      *
      * @return void
      */
-    // public function test_csv_from_google_docs()
-    // {
-    //     // create a fake file
-    //     Storage::fake('test');
+    public function test_csv_from_google_docs()
+    {
+        $url = "https://docs.google.com/spreadsheets/d/1BVzVbgptpCN3LQ4vRC8iQHj7QatVcnPStc19CmpHQ4o/edit#gid=0";
 
-    //     $url = "https://docs.google.com/spreadsheets/d/1BVzVbgptpCN3LQ4vRC8iQHj7QatVcnPStc19CmpHQ4o/edit#gid=0";
+        $expected = "Dope, necessary for all repfam";
 
-    //     $csv = CSV::fromGoogle($url)
-    //         ->exclude([1, 3, 7, 13, 20])
-    //         ->parse();
+        $csv1 = CSV::fromGoogle(URL::make($url))
+            ->exclude([0, 2, 6, 12, 19, 26])
+            ->parse()
+            ->guessFill();
 
-    //     dd($csv);
+        $csv2 = CSV::fromGoogle(URL::make($url))
+            ->include([1, 27])
+            ->parse()
+            ->guessFill();
 
-    //     $this->assertEquals($csv->get('name')->toArray(), ['lorem', 'lorem ipsum'], '"name" column');
-    //     $this->assertEquals($csv->get('title')->toArray(), ['ipsum', 'dolor solor'], '"title" column');
-    //     $this->assertEquals($csv->get('desc')->toArray(), ['dolor color', 'gipsum'], '"desc" column');
-    // }
+        $this->assertEquals($csv1->get("COMMENTS")[20], $expected);
+        $this->assertEquals($csv2->get("COMMENTS")[0], $expected);
+    }
 }
