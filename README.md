@@ -1,3 +1,37 @@
 <p align="center"><img src="https://imgur.com/FKVEMEe.jpg" width="400"></p>
 
-![Laravel](https://github.com/Sniddl/fashion/workflows/Laravel/badge.svg)
+<h1 align="center">Fashion</h1>
+<p align="center">
+    A fashion discovery website.
+</p>
+<p align="center">
+    <img src="https://github.com/Sniddl/fashion/workflows/Laravel/badge.svg">
+</p>
+<hr>
+
+
+# Installation
+Clone the repo.
+```
+git clone https://github.com/Sniddl/fashion
+```
+
+Install composer and npm dependencies.
+```
+composer install && npm install
+```
+
+Generate an environment key.
+```
+php artisan key:generate
+```
+
+Migrate the data base.
+```
+php artisan migrate
+```
+
+Run tests for good measure.
+```
+php artisan test
+```
