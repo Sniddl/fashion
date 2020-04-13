@@ -32,7 +32,7 @@ class FileUploadController extends Controller
                 "sheets_url" => $request->sheets_url
             ]);
         } else if ($request->csv_file) {
-            // $path = $request->file('csv_file')->store('csv');
+            $path = $request->file('csv_file')->store('csv');
         }
     }
 }
