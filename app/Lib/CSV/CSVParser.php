@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 
 class CSVParser
 {
-    private string $content;
+    public string $content;
     public Collection $lines;
     public Collection $header;
 

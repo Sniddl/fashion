@@ -10,6 +10,7 @@ class CSV
 {
     public Collection $rows;
     public Collection $columns;
+    public int $longestRow;
 
     public function __construct()
     {
@@ -50,5 +51,19 @@ class CSV
             // dd($this->get($column));
         }
         return $this;
+    }
+
+    public function getColumns()
+    {
+        $rows = $this->rows;
+        $rows->prepend($this->columns->values());
+        $this->longestRow = $rows->map(fn ($x) => count($x))->max();
+
+        $columns = collect();
+        for ($i = 0; $i < $this->longestRow; $i++) {
+            $columns->push($rows->pluck($i));
+        }
+
+        return $columns;
     }
 }
