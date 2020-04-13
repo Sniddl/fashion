@@ -58,6 +58,7 @@ jobs:
 
   notifications:
     needs: [laravel-tests]
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact pass_status_job01
@@ -76,5 +77,5 @@ jobs:
         uses: Sniddl/discord-commits@v1.2
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          message: "**{{ env.teststatus }}** commit to `{{ github.context.payload.repository.owner.name }}/{{ github.context.payload.repository.name}}`.\nDiff: {{ github.context.payload.compare }}"
+          message: "**{{ env.teststatus }}** commit to **{{ github.context.payload.repository.owner.name }}/{{ github.context.payload.repository.name}}**.\nDiff: {{ github.context.payload.compare }}"
           embed: '{ "title": "{{ commit.title }}", "description": "{{ commit.description }}", "url": "{{ commit.url }}", "author": { "name": "{{ commit.author.name }} ({{ commit.author.username }})", "icon_url": "https://avatars.io/gravatar/{{ commit.author.email }}"} }'
