@@ -10,7 +10,7 @@ class FileUploadController extends Controller
 {
     public function csv(Request $request)
     {
-        // dd($request->all());
+
         $request->validate([
             'sheets_url' => [
                 "required_without:csv_file",
@@ -27,14 +27,12 @@ class FileUploadController extends Controller
 
         if ($request->sheets_url) {
             $csv = CSV::fromGoogle(URL::make($request->sheets_url))->parse();
-
-            // 
-            // dd();
             return back()->with([
                 "csv" => $csv,
                 "sheets_url" => $request->sheets_url
             ]);
+        } else if ($request->csv_file) {
+            $path = $request->file('csv_file')->store('csv');
         }
-        // $path = $request->file('csv')->store('csv');
     }
 }
