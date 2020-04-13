@@ -57,6 +57,7 @@ jobs:
           path: status_job01.txt
 
   notifications:
+    needs: [laravel-tests]
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact pass_status_job01
