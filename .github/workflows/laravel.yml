@@ -56,26 +56,24 @@ jobs:
           name: pass_status_job01
           path: status_job01.txt
 
-      
   notifications:
     runs-on: ubuntu-latest
     steps:
+      - name: Download artifact pass_status_job01
+        uses: actions/download-artifact@v1
+        with:
+          name: pass_status_job01
 
-    - name: Download artifact pass_status_job01
-      uses: actions/download-artifact@v1
-      with:
-        name: pass_status_job01
-
-    - name: Set the statuses of Job 01 and Job 02 as output parameters
-      id: set_outputs
-      run: |
-        echo "::set-output name=status_job01::$(<pass_status_job01/status_job01.txt)"
+      - name: Set the statuses of Job 01 and Job 02 as output parameters
+        id: set_outputs
+        run: |
+          echo "::set-output name=status_job01::$(<pass_status_job01/status_job01.txt)"
 
       - name: Discord Commits
-      env:
-        teststatus: ${{ steps.set_outputs.outputs.status_job01 }}
-      uses: Sniddl/discord-commits@v1.2
-      with:
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        message: "**{{ env.teststatus }}** commit to `{{ github.context.payload.repository.owner.name }}/{{ github.context.payload.repository.name}}`.\nDiff: {{ github.context.payload.compare }}"
-        embed: '{ "title": "{{ commit.title }}", "description": "{{ commit.description }}", "url": "{{ commit.url }}", "author": { "name": "{{ commit.author.name }} ({{ commit.author.username }})", "icon_url": "https://avatars.io/gravatar/{{ commit.author.email }}"} }'
+        env:
+          teststatus: ${{ steps.set_outputs.outputs.status_job01 }}
+        uses: Sniddl/discord-commits@v1.2
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          message: "**{{ env.teststatus }}** commit to `{{ github.context.payload.repository.owner.name }}/{{ github.context.payload.repository.name}}`.\nDiff: {{ github.context.payload.compare }}"
+          embed: '{ "title": "{{ commit.title }}", "description": "{{ commit.description }}", "url": "{{ commit.url }}", "author": { "name": "{{ commit.author.name }} ({{ commit.author.username }})", "icon_url": "https://avatars.io/gravatar/{{ commit.author.email }}"} }'
