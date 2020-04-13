@@ -10882,3 +10882,27 @@ a.text-dark:focus {
   }
 }
 
+.sticky-column {
+  position: sticky;
+  position: -webkit-sticky;
+  left: 0;
+  background: white;
+  color: black;
+  z-index: 1;
+  width: 100px;
+}
+
+.sticky-header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background: white;
+  color: black;
+  z-index: 3;
+}
+
+.sticky-header:first-child {
+  left: 0;
+  z-index: 4;
+}
+
