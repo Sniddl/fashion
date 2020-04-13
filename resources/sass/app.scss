@@ -1,34 +1,129 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 
+@import "tailwindcss/base";
 
-.sticky-column {
-    position: sticky;
-    position: -webkit-sticky;
-    left: 0;
-    background: white;
-    color: black;
-    z-index: 1;
-    width: 100px;
-  }
+@import "tailwindcss/components";
 
+@import "tailwindcss/utilities";
 
-.sticky-header {
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    background: white;
-    color: black;
-    z-index: 3;
-  }
+:root {
+}
 
-  .sticky-header:first-child {
-    left: 0;
-    z-index: 4;
-  }
+.grid-wrapper {
+    overflow: hidden;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+
+    background:
+		/* Shadow covers */ linear-gradient(
+            white 30%,
+            rgba(255, 255, 255, 0)
+        ),
+        linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
+        /* Shadows */
+            radial-gradient(
+                50% 0,
+                farthest-side,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0)
+            ),
+        radial-gradient(
+                50% 100%,
+                farthest-side,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0)
+            )
+            0 100%;
+    // background:
+    // /* Shadow covers */ linear-gradient(
+    //         white 30%,
+    //         rgba(255, 255, 255, 0)
+    //     ),
+    //     linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
+    //     /* Shadows */
+    //         radial-gradient(
+    //             farthest-side at 50% 0,
+    //             rgba(0, 0, 0, 0.2),
+    //             rgba(0, 0, 0, 0)
+    //         ),
+    //     radial-gradient(
+    //             farthest-side at 50% 100%,
+    //             rgba(0, 0, 0, 0.2),
+    //             rgba(0, 0, 0, 0)
+    //         )
+    //         0 100%;
+    --scroll-overlay: white;
+    --scroll-shadow-size: 24px;
+    --scroll-shadow: rgba(0, 0, 0, 0.2);
+    --transparent: rgba(0, 0, 0, 0);
+    background-image: linear-gradient(
+            to right,
+            var(--scroll-overlay) 70%,
+            rgba(255, 255, 255, 0)
+        ),
+        linear-gradient(
+            to left,
+            var(--scroll-overlay) 30%,
+            rgba(255, 255, 255, 0)
+        ),
+        linear-gradient(var(--scroll-overlay) 30%, rgba(255, 255, 255, 0)),
+        linear-gradient(rgba(255, 255, 255, 0), var(--scroll-overlay) 70%),
+        radial-gradient(
+            farthest-side at 50% 50%,
+            var(--scroll-shadow) 0%,
+            rgba(255, 255, 255, 1) 100%
+        ),
+        radial-gradient(
+            farthest-side at 50% 50%,
+            var(--scroll-shadow) 0%,
+            rgba(255, 255, 255, 1) 100%
+        ),
+        radial-gradient(
+            farthest-side at 50% 50%,
+            var(--scroll-shadow) 0%,
+            rgba(255, 255, 255, 1) 100%
+        ),
+        radial-gradient(
+            farthest-side at 50% 50%,
+            var(--scroll-shadow) 0%,
+            rgba(255, 255, 255, 1) 100%
+        );
+
+    background-repeat: no-repeat;
+    // background-color: blue;
+    background-size: 40px 100%, 40px 100%, 100% 40px, 100% 40px, 14px 100%,
+        14px 100%, 100% 14px, 100% 14px;
+    background-position-x: left, right, center, center, calc(0% - 7px),
+        calc(100% + 7px), center, center;
+    background-position-y: center, center, top, bottom, center, center,
+        calc(0% - 7px), calc(100% + 7px);
+    // background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+
+    /* Opera doesn't support this in the shorthand */
+    background-attachment: local, local, local, local, scroll, scroll, scroll,
+        scroll;
+    &:hover {
+        overflow: auto;
+    }
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.grid-table {
+    overflow: visible;
+    max-height: 50vh;
+    grid-gap: 1px;
+}
+
+.grid-table > * {
+    padding: 0.25rem;
+    box-shadow: 0 0 0 1px $gray-300;
+}

@@ -53,17 +53,22 @@ class CSV
         return $this;
     }
 
+    public function getLongestRow()
+    {
+        if (!isset($this->longestRow)) {
+            $rows = $this->rows;
+            $rows->prepend($this->columns->values());
+            $this->longestRow = $rows->map(fn ($x) => count($x))->max();
+        }
+        return $this->longestRow;
+    }
+
     public function getColumns()
     {
-        $rows = $this->rows;
-        $rows->prepend($this->columns->values());
-        $this->longestRow = $rows->map(fn ($x) => count($x))->max();
-
         $columns = collect();
-        for ($i = 0; $i < $this->longestRow; $i++) {
-            $columns->push($rows->pluck($i));
+        for ($i = 0; $i < $this->getLongestRow(); $i++) {
+            $columns->push($this->rows->pluck($i));
         }
-
         return $columns;
     }
 }
