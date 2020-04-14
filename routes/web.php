@@ -25,3 +25,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/upload/csv', 'FileUploadController@csv');
 
 Route::get('/upload', 'UploadController@index')->name('upload');
+
+Route::get('/test', 'TestController@index')->name('test');

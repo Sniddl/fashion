@@ -13,34 +13,29 @@
 
 @import "tailwindcss/utilities";
 
-:root {
-}
+:root {}
 
 .grid-wrapper {
     overflow: hidden;
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
 
     background:
-		/* Shadow covers */ linear-gradient(
-            white 30%,
-            rgba(255, 255, 255, 0)
-        ),
+        /* Shadow covers */
+        linear-gradient(white 30%,
+            rgba(255, 255, 255, 0)),
         linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
         /* Shadows */
-            radial-gradient(
-                50% 0,
-                farthest-side,
-                rgba(0, 0, 0, 0.2),
-                rgba(0, 0, 0, 0)
-            ),
-        radial-gradient(
-                50% 100%,
-                farthest-side,
-                rgba(0, 0, 0, 0.2),
-                rgba(0, 0, 0, 0)
-            )
-            0 100%;
+        radial-gradient(50% 0,
+            farthest-side,
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0)),
+        radial-gradient(50% 100%,
+            farthest-side,
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0)) 0 100%;
     // background:
     // /* Shadow covers */ linear-gradient(
     //         white 30%,
@@ -63,38 +58,26 @@
     --scroll-shadow-size: 24px;
     --scroll-shadow: rgba(0, 0, 0, 0.2);
     --transparent: rgba(0, 0, 0, 0);
-    background-image: linear-gradient(
-            to right,
+    background-image: linear-gradient(to right,
             var(--scroll-overlay) 70%,
-            rgba(255, 255, 255, 0)
-        ),
-        linear-gradient(
-            to left,
+            rgba(255, 255, 255, 0)),
+        linear-gradient(to left,
             var(--scroll-overlay) 30%,
-            rgba(255, 255, 255, 0)
-        ),
+            rgba(255, 255, 255, 0)),
         linear-gradient(var(--scroll-overlay) 30%, rgba(255, 255, 255, 0)),
         linear-gradient(rgba(255, 255, 255, 0), var(--scroll-overlay) 70%),
-        radial-gradient(
-            farthest-side at 50% 50%,
+        radial-gradient(farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%
-        ),
-        radial-gradient(
-            farthest-side at 50% 50%,
+            rgba(255, 255, 255, 1) 100%),
+        radial-gradient(farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%
-        ),
-        radial-gradient(
-            farthest-side at 50% 50%,
+            rgba(255, 255, 255, 1) 100%),
+        radial-gradient(farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%
-        ),
-        radial-gradient(
-            farthest-side at 50% 50%,
+            rgba(255, 255, 255, 1) 100%),
+        radial-gradient(farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%
-        );
+            rgba(255, 255, 255, 1) 100%);
 
     background-repeat: no-repeat;
     // background-color: blue;
@@ -109,9 +92,11 @@
     /* Opera doesn't support this in the shorthand */
     background-attachment: local, local, local, local, scroll, scroll, scroll,
         scroll;
+
     &:hover {
         overflow: auto;
     }
+
     ::-webkit-scrollbar {
         display: none;
     }
@@ -123,7 +108,24 @@
     grid-gap: 1px;
 }
 
-.grid-table > * {
+.grid-table>* {
     padding: 0.25rem;
     box-shadow: 0 0 0 1px $gray-300;
+}
+
+.img-overlay {
+    background-image: linear-gradient(180deg,rgba(0,0,0,.2) 0,rgba(0,0,0,.199) 3.5%,rgba(0,0,0,.195) 7%,rgba(0,0,0,.19) 10.35%,rgba(0,0,0,.182) 13.85%,rgba(0,0,0,.174) 17.35%,rgba(0,0,0,.165) 20.85%,rgba(0,0,0,.155) 24.35%,rgba(0,0,0,.145) 27.85%,rgba(0,0,0,.135) 31.35%,rgba(0,0,0,.126) 34.85%,rgba(0,0,0,.118) 38.35%,rgba(0,0,0,.11) 41.85%,rgba(0,0,0,.105) 45.35%,rgba(0,0,0,.1) 48.85%,rgba(0,0,0,.103) 52.35%,rgba(0,0,0,.112) 55.85%,rgba(0,0,0,.126) 59.35%,rgba(0,0,0,.144) 62.85%,rgba(0,0,0,.165) 66.35%,rgba(0,0,0,.188) 69.85%,rgba(0,0,0,.213) 73.35%,rgba(0,0,0,.237) 76.85%,rgba(0,0,0,.262) 80.35%,rgba(0,0,0,.285) 83.85%,rgba(0,0,0,.306) 87.35%,rgba(0,0,0,.324) 90.85%,rgba(0,0,0,.338) 94.35%,rgba(0,0,0,.347) 97.85%,rgba(0,0,0,.35));
+    display: none;
+}
+
+.img-overlay-trigger:hover .img-overlay {
+    display: block;
+}
+
+.parent-hover{
+    visibility: hidden;
+}
+
+.parent-hover-trigger:hover .parent-hover {
+    visibility: visible;
 }
