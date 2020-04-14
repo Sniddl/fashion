@@ -5,7 +5,7 @@
     A fashion discovery website.
 </p>
 <p align="center">
-    <img src="https://github.com/Sniddl/fashion/workflows/Laravel/badge.svg">
+    <a href="https://github.com/Sniddl/fashion/actions?query=workflow%3ALaravel"><img src="https://github.com/Sniddl/fashion/workflows/Laravel/badge.svg"></a>
     <a href="https://discord.gg/CKUHe6r"><img src="https://img.shields.io/badge/dynamic/json?color=blueviolet&label=Discord&query=presence_count&url=https%3A%2F%2Fdiscordapp.com%2Fapi%2Fguilds%2F669623307225661479%2Fwidget.json"></a>
 </p>
 <hr>
