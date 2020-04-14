@@ -6,9 +6,18 @@
 </p>
 <p align="center">
     <img src="https://github.com/Sniddl/fashion/workflows/Laravel/badge.svg">
+    <img src="https://img.shields.io/discord/669623307225661479.svg">
 </p>
 <hr>
 
+# About
+
+Think PC Part Picker but clothing.
+
+# Goals
+- Create testable/maintainable code.
+- Create Laravel 7/Vue components.
+- Assure proper Laravel code style is used. (custom services, validators, queues, etc.)
 
 # Installation
 Clone the repo.
