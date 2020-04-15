@@ -49526,6 +49526,41 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+var darkButton = document.getElementById('dark');
+var lightButton = document.getElementById('light');
+var solarButton = document.getElementById('solar');
+var solarDarkButton = document.getElementById('solarDark');
+
+function themeSetter(t) {
+  document.body.classList.remove('light', 'dark', 'solar', 'solarDark');
+  document.body.classList.add(t);
+  localStorage.setItem('theme', t);
+}
+
+(function () {
+  var theme = localStorage.getItem('theme') || 'light';
+  themeSetter(theme);
+})();
+
+darkButton.onclick = function (e) {
+  e.preventDefault();
+  themeSetter('dark');
+};
+
+lightButton.onclick = function (e) {
+  e.preventDefault();
+  themeSetter('light');
+};
+
+solarButton.onclick = function (e) {
+  e.preventDefault();
+  themeSetter('solar');
+};
+
+solarDarkButton.onclick = function (e) {
+  e.preventDefault();
+  themeSetter('solarDark');
+};
 
 /***/ }),
 

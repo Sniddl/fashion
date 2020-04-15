@@ -8,7 +8,7 @@
         </div>
         <div class="absolute bottom-0 left-0 flex items-center parent-hover m-4">
             <img class="rounded-full mr-3" src="/img/fashion_logo.png" width="30px">
-            <a href="#" class="text-white">User</a>
+            <a href="#" class="text-white themeReset">User</a>
         </div>
     </div>
 </div>

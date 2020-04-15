@@ -30,3 +30,42 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+
+const darkButton = document.getElementById('dark');
+const lightButton = document.getElementById('light');
+const solarButton = document.getElementById('solar');
+const solarDarkButton = document.getElementById('solarDark');
+
+
+
+function themeSetter(t) { 
+    document.body.classList.remove('light', 'dark', 'solar', 'solarDark');
+    document.body.classList.add(t);
+    localStorage.setItem('theme', t);
+}
+
+(function () {
+    const theme = localStorage.getItem('theme') || 'light';
+    themeSetter(theme);
+})();
+
+darkButton.onclick = (e) => {
+    e.preventDefault();
+    themeSetter('dark');
+}
+
+lightButton.onclick = (e) => {
+    e.preventDefault();
+    themeSetter('light');
+}
+
+solarButton.onclick = (e) => {
+    e.preventDefault();
+    themeSetter('solar');
+}
+
+solarDarkButton.onclick = (e) => {
+    e.preventDefault();
+    themeSetter('solarDark');
+}

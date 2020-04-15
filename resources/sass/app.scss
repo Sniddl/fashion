@@ -1,33 +1,90 @@
-// Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 
-// Variables
+
 @import "variables";
 
-// Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+:root {
+    --gray-100: #{$gray-100};
+    --gray-200: #{$gray-200};
+    --gray-300: #{$gray-300};
+    --gray-400: #{$gray-400};
+    --gray-500: #{$gray-500};
+    --gray-600: #{$gray-600};
+    --gray-700: #{$gray-700};
+    --gray-800: #{$gray-800};
+    --gray-900: #{$gray-900};
+    --white: #{$white};
+    --black: #{$black};
+}
 
-@import "tailwindcss/base";
+.dark {
+    --black: #{$white};
+    --white: #{$black};
+    --gray-900: #{$gray-100};
+    --gray-800: #{$gray-200};
+    --gray-700: #{$gray-300};
+    --gray-600: #{$gray-400};
+    --gray-500: #{$gray-500};
+    --gray-400: #{$gray-600};
+    --gray-300: #{$gray-700};
+    --gray-200: #{$gray-800};
+    --gray-100: #{$gray-900};
+}
 
-@import "tailwindcss/components";
+.solar {
+    --white: #fdf6e3;;
+    --gray-100: #eee8d5;
+    --gray-200: #93a1a1;
+    --gray-300: #839496;
+    --gray-400: #657b83;
+    --gray-500: #586e75;
+    --gray-600: #073642;
+    --gray-700: #002b36;
+    --gray-800: #001d24;
+    --black: #00171d;
+    
+}
 
-@import "tailwindcss/utilities";
+.solarDark {
+    --black: #fdf6e3;;
+    --gray-800: #eee8d5;
+    --gray-700: #93a1a1;
+    --gray-600: #839496;
+    --gray-500: #657b83;
+    --gray-400: #586e75;
+    --gray-300: #073642;
+    --gray-200: #002b36;
+    --gray-100: #001d24;
+    --white: #00171d;
+}
 
-:root {}
+.themeReset {
+    --gray-100: #{$gray-100};
+    --gray-200: #{$gray-200};
+    --gray-300: #{$gray-300};
+    --gray-400: #{$gray-400};
+    --gray-500: #{$gray-500};
+    --gray-600: #{$gray-600};
+    --gray-700: #{$gray-700};
+    --gray-800: #{$gray-800};
+    --gray-900: #{$gray-900};
+    --white: #{$white};
+    --black: #{$black};
+}
+
+@tailwind  base;
+@tailwind  components;
+@tailwind  utilities;
 
 .grid-wrapper {
     overflow: hidden;
     -ms-overflow-style: none;
-    /* Internet Explorer 10+ */
     scrollbar-width: none;
-    /* Firefox */
 
     background:
-        /* Shadow covers */
         linear-gradient(white 30%,
             rgba(255, 255, 255, 0)),
         linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
-        /* Shadows */
         radial-gradient(50% 0,
             farthest-side,
             rgba(0, 0, 0, 0.2),
@@ -36,24 +93,6 @@
             farthest-side,
             rgba(0, 0, 0, 0.2),
             rgba(0, 0, 0, 0)) 0 100%;
-    // background:
-    // /* Shadow covers */ linear-gradient(
-    //         white 30%,
-    //         rgba(255, 255, 255, 0)
-    //     ),
-    //     linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
-    //     /* Shadows */
-    //         radial-gradient(
-    //             farthest-side at 50% 0,
-    //             rgba(0, 0, 0, 0.2),
-    //             rgba(0, 0, 0, 0)
-    //         ),
-    //     radial-gradient(
-    //             farthest-side at 50% 100%,
-    //             rgba(0, 0, 0, 0.2),
-    //             rgba(0, 0, 0, 0)
-    //         )
-    //         0 100%;
     --scroll-overlay: white;
     --scroll-shadow-size: 24px;
     --scroll-shadow: rgba(0, 0, 0, 0.2);
@@ -80,16 +119,12 @@
             rgba(255, 255, 255, 1) 100%);
 
     background-repeat: no-repeat;
-    // background-color: blue;
     background-size: 40px 100%, 40px 100%, 100% 40px, 100% 40px, 14px 100%,
         14px 100%, 100% 14px, 100% 14px;
     background-position-x: left, right, center, center, calc(0% - 7px),
         calc(100% + 7px), center, center;
     background-position-y: center, center, top, bottom, center, center,
         calc(0% - 7px), calc(100% + 7px);
-    // background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
-
-    /* Opera doesn't support this in the shorthand */
     background-attachment: local, local, local, local, scroll, scroll, scroll,
         scroll;
 
@@ -129,3 +164,4 @@
 .parent-hover-trigger:hover .parent-hover {
     visibility: visible;
 }
+
