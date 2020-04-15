@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 
-
 @import "variables";
 
 :root {
@@ -32,7 +31,7 @@
 }
 
 .solar {
-    --white: #fdf6e3;;
+    --white: #fdf6e3;
     --gray-100: #eee8d5;
     --gray-200: #93a1a1;
     --gray-300: #839496;
@@ -42,11 +41,10 @@
     --gray-700: #002b36;
     --gray-800: #001d24;
     --black: #00171d;
-    
 }
 
 .solarDark {
-    --black: #fdf6e3;;
+    --black: #fdf6e3;
     --gray-800: #eee8d5;
     --gray-700: #93a1a1;
     --gray-600: #839496;
@@ -58,65 +56,101 @@
     --white: #00171d;
 }
 
-.themeReset {
-    --gray-100: #{$gray-100};
-    --gray-200: #{$gray-200};
-    --gray-300: #{$gray-300};
-    --gray-400: #{$gray-400};
-    --gray-500: #{$gray-500};
-    --gray-600: #{$gray-600};
-    --gray-700: #{$gray-700};
-    --gray-800: #{$gray-800};
-    --gray-900: #{$gray-900};
-    --white: #{$white};
-    --black: #{$black};
+.light,
+.dark {
+    &.theme-reset,
+    .theme-reset {
+        --gray-100: #{$gray-100};
+        --gray-200: #{$gray-200};
+        --gray-300: #{$gray-300};
+        --gray-400: #{$gray-400};
+        --gray-500: #{$gray-500};
+        --gray-600: #{$gray-600};
+        --gray-700: #{$gray-700};
+        --gray-800: #{$gray-800};
+        --gray-900: #{$gray-900};
+        --white: #{$white};
+        --black: #{$black};
+    }
 }
 
-@tailwind  base;
-@tailwind  components;
-@tailwind  utilities;
+.solar,
+.solarDark {
+    &.theme-reset,
+    .theme-reset {
+        --white: #fdf6e3;
+        --gray-100: #eee8d5;
+        --gray-200: #93a1a1;
+        --gray-300: #839496;
+        --gray-400: #657b83;
+        --gray-500: #586e75;
+        --gray-600: #073642;
+        --gray-700: #002b36;
+        --gray-800: #001d24;
+        --black: #00171d;
+    }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .grid-wrapper {
     overflow: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
 
-    background:
-        linear-gradient(white 30%,
-            rgba(255, 255, 255, 0)),
+    background: linear-gradient(white 30%, rgba(255, 255, 255, 0)),
         linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
-        radial-gradient(50% 0,
+        radial-gradient(
+            50% 0,
             farthest-side,
             rgba(0, 0, 0, 0.2),
-            rgba(0, 0, 0, 0)),
-        radial-gradient(50% 100%,
-            farthest-side,
-            rgba(0, 0, 0, 0.2),
-            rgba(0, 0, 0, 0)) 0 100%;
+            rgba(0, 0, 0, 0)
+        ),
+        radial-gradient(
+                50% 100%,
+                farthest-side,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0)
+            )
+            0 100%;
     --scroll-overlay: white;
     --scroll-shadow-size: 24px;
     --scroll-shadow: rgba(0, 0, 0, 0.2);
     --transparent: rgba(0, 0, 0, 0);
-    background-image: linear-gradient(to right,
+    background-image: linear-gradient(
+            to right,
             var(--scroll-overlay) 70%,
-            rgba(255, 255, 255, 0)),
-        linear-gradient(to left,
+            rgba(255, 255, 255, 0)
+        ),
+        linear-gradient(
+            to left,
             var(--scroll-overlay) 30%,
-            rgba(255, 255, 255, 0)),
+            rgba(255, 255, 255, 0)
+        ),
         linear-gradient(var(--scroll-overlay) 30%, rgba(255, 255, 255, 0)),
         linear-gradient(rgba(255, 255, 255, 0), var(--scroll-overlay) 70%),
-        radial-gradient(farthest-side at 50% 50%,
+        radial-gradient(
+            farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%),
-        radial-gradient(farthest-side at 50% 50%,
+            rgba(255, 255, 255, 1) 100%
+        ),
+        radial-gradient(
+            farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%),
-        radial-gradient(farthest-side at 50% 50%,
+            rgba(255, 255, 255, 1) 100%
+        ),
+        radial-gradient(
+            farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%),
-        radial-gradient(farthest-side at 50% 50%,
+            rgba(255, 255, 255, 1) 100%
+        ),
+        radial-gradient(
+            farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%);
+            rgba(255, 255, 255, 1) 100%
+        );
 
     background-repeat: no-repeat;
     background-size: 40px 100%, 40px 100%, 100% 40px, 100% 40px, 14px 100%,
@@ -143,13 +177,45 @@
     grid-gap: 1px;
 }
 
-.grid-table>* {
+.grid-table > * {
     padding: 0.25rem;
     box-shadow: 0 0 0 1px $gray-300;
 }
 
 .img-overlay {
-    background-image: linear-gradient(180deg,rgba(0,0,0,.2) 0,rgba(0,0,0,.199) 3.5%,rgba(0,0,0,.195) 7%,rgba(0,0,0,.19) 10.35%,rgba(0,0,0,.182) 13.85%,rgba(0,0,0,.174) 17.35%,rgba(0,0,0,.165) 20.85%,rgba(0,0,0,.155) 24.35%,rgba(0,0,0,.145) 27.85%,rgba(0,0,0,.135) 31.35%,rgba(0,0,0,.126) 34.85%,rgba(0,0,0,.118) 38.35%,rgba(0,0,0,.11) 41.85%,rgba(0,0,0,.105) 45.35%,rgba(0,0,0,.1) 48.85%,rgba(0,0,0,.103) 52.35%,rgba(0,0,0,.112) 55.85%,rgba(0,0,0,.126) 59.35%,rgba(0,0,0,.144) 62.85%,rgba(0,0,0,.165) 66.35%,rgba(0,0,0,.188) 69.85%,rgba(0,0,0,.213) 73.35%,rgba(0,0,0,.237) 76.85%,rgba(0,0,0,.262) 80.35%,rgba(0,0,0,.285) 83.85%,rgba(0,0,0,.306) 87.35%,rgba(0,0,0,.324) 90.85%,rgba(0,0,0,.338) 94.35%,rgba(0,0,0,.347) 97.85%,rgba(0,0,0,.35));
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.2) 0,
+        rgba(0, 0, 0, 0.199) 3.5%,
+        rgba(0, 0, 0, 0.195) 7%,
+        rgba(0, 0, 0, 0.19) 10.35%,
+        rgba(0, 0, 0, 0.182) 13.85%,
+        rgba(0, 0, 0, 0.174) 17.35%,
+        rgba(0, 0, 0, 0.165) 20.85%,
+        rgba(0, 0, 0, 0.155) 24.35%,
+        rgba(0, 0, 0, 0.145) 27.85%,
+        rgba(0, 0, 0, 0.135) 31.35%,
+        rgba(0, 0, 0, 0.126) 34.85%,
+        rgba(0, 0, 0, 0.118) 38.35%,
+        rgba(0, 0, 0, 0.11) 41.85%,
+        rgba(0, 0, 0, 0.105) 45.35%,
+        rgba(0, 0, 0, 0.1) 48.85%,
+        rgba(0, 0, 0, 0.103) 52.35%,
+        rgba(0, 0, 0, 0.112) 55.85%,
+        rgba(0, 0, 0, 0.126) 59.35%,
+        rgba(0, 0, 0, 0.144) 62.85%,
+        rgba(0, 0, 0, 0.165) 66.35%,
+        rgba(0, 0, 0, 0.188) 69.85%,
+        rgba(0, 0, 0, 0.213) 73.35%,
+        rgba(0, 0, 0, 0.237) 76.85%,
+        rgba(0, 0, 0, 0.262) 80.35%,
+        rgba(0, 0, 0, 0.285) 83.85%,
+        rgba(0, 0, 0, 0.306) 87.35%,
+        rgba(0, 0, 0, 0.324) 90.85%,
+        rgba(0, 0, 0, 0.338) 94.35%,
+        rgba(0, 0, 0, 0.347) 97.85%,
+        rgba(0, 0, 0, 0.35)
+    );
     display: none;
 }
 
@@ -157,11 +223,10 @@
     display: block;
 }
 
-.parent-hover{
+.parent-hover {
     visibility: hidden;
 }
 
 .parent-hover-trigger:hover .parent-hover {
     visibility: visible;
 }
-

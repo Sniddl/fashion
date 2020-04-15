@@ -78,7 +78,10 @@
   --white: #00171d;
 }
 
-.themeReset {
+.light.theme-reset,
+.light .theme-reset,
+.dark.theme-reset,
+.dark .theme-reset {
   --gray-100: #f7fafc;
   --gray-200: #edf2f7;
   --gray-300: #e2e8f0;
@@ -90,6 +93,22 @@
   --gray-900: #1a202c;
   --white: #fff;
   --black: #000;
+}
+
+.solar.theme-reset,
+.solar .theme-reset,
+.solarDark.theme-reset,
+.solarDark .theme-reset {
+  --white: #fdf6e3;
+  --gray-100: #eee8d5;
+  --gray-200: #93a1a1;
+  --gray-300: #839496;
+  --gray-400: #657b83;
+  --gray-500: #586e75;
+  --gray-600: #073642;
+  --gray-700: #002b36;
+  --gray-800: #001d24;
+  --black: #00171d;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
