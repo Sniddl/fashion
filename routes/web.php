@@ -22,7 +22,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/upload/csv', 'FileUploadController@csv');
+Route::post('/upload/csv1', 'FileUploadController@CSVStage1');
+Route::post('/upload/csv2', 'FileUploadController@CSVStage2');
+
 
 Route::get('/upload', 'UploadController@index')->name('upload');
 

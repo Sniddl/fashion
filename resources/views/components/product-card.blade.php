@@ -1,4 +1,4 @@
-<div>
+<div {{ $attributes }}>
     <div class="relative inline-block img-overlay-trigger parent-hover-trigger rounded-lg overflow-hidden">
         <img src="/img/burberry.jpg" width="350px">
         <div class="img-overlay absolute top-0 bottom-0 left-0 right-0"></div>

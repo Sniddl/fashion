@@ -3,8 +3,14 @@
 @section('content')
 
 
-<div class="container">
-    <x-product-card></x-product-card>
+<div class="container mx-auto">
+    <div class="flex flex-wrap">
+        @for ($i = 0; $i < 20; $i++)
+        <x-product-card class="w-1/3 p-2"></x-product-card>
+        @endfor
+    </div>
+    
+    
 </div>
 
 @endsection
