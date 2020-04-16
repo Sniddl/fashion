@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use Exception;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
 
 class ArrayInt implements Rule
 {
@@ -41,7 +42,12 @@ class ArrayInt implements Rule
             collect($value)->map(fn ($x) => $this->parse_int($x));
             return true;
         } catch (\Exception $err) {
-            return false;
+            try {
+                Str::of($value)->explode(',')->map(fn ($x) => $this->parse_int($x));
+                return true;
+            } catch (\Exception $err) {
+                return false;
+            }
         }
     }
 

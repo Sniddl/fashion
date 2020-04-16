@@ -22,12 +22,12 @@
     --gray-900: #{$gray-100};
     --gray-800: #{$gray-200};
     --gray-700: #{$gray-300};
-    --gray-600: #{$gray-400};
-    --gray-500: #{$gray-500};
-    --gray-400: #{$gray-600};
-    --gray-300: #{$gray-700};
-    --gray-200: #{$gray-800};
-    --gray-100: #{$gray-900};
+    --gray-600: rgb(174, 174, 178);
+    --gray-500: rgb(124, 124, 128);
+    --gray-400: rgb(84, 84, 86);
+    --gray-300: rgb(68, 68, 70);
+    --gray-200: rgb(54, 54, 56);
+    --gray-100: rgb(36, 36, 38);
 }
 
 .solar {
@@ -100,8 +100,8 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 
-    background: linear-gradient(white 30%, rgba(255, 255, 255, 0)),
-        linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
+    background: linear-gradient(var(--white) 30%, rgba(255, 255, 255, 0)),
+        linear-gradient(rgba(255, 255, 255, 0), var(--white) 70%) 0 100%,
         radial-gradient(
             50% 0,
             farthest-side,
@@ -115,7 +115,7 @@
                 rgba(0, 0, 0, 0)
             )
             0 100%;
-    --scroll-overlay: white;
+    --scroll-overlay: var(--white);
     --scroll-shadow-size: 24px;
     --scroll-shadow: rgba(0, 0, 0, 0.2);
     --transparent: rgba(0, 0, 0, 0);
@@ -134,22 +134,22 @@
         radial-gradient(
             farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%
+            var(--white) 100%
         ),
         radial-gradient(
             farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%
+            var(--white) 100%
         ),
         radial-gradient(
             farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%
+            var(--white) 100%
         ),
         radial-gradient(
             farthest-side at 50% 50%,
             var(--scroll-shadow) 0%,
-            rgba(255, 255, 255, 1) 100%
+            var(--white) 100%
         );
 
     background-repeat: no-repeat;
@@ -230,3 +230,54 @@
 .parent-hover-trigger:hover .parent-hover {
     visibility: visible;
 }
+
+
+
+@keyframes ldio-p0haaj8s20g {
+   0% { transform: translate(12px,80px) scale(0); }
+  25% { transform: translate(12px,80px) scale(0); }
+  50% { transform: translate(12px,80px) scale(1); }
+  75% { transform: translate(80px,80px) scale(1); }
+ 100% { transform: translate(148px,80px) scale(1); }
+}
+@keyframes ldio-p0haaj8s20g-r {
+   0% { transform: translate(148px,80px) scale(1); }
+ 100% { transform: translate(148px,80px) scale(0); }
+}
+
+.ldio-p0haaj8s20g div {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transform: translate(80px,80px) scale(1);
+  animation: ldio-p0haaj8s20g 1s infinite cubic-bezier(0,0.5,0.5,1);
+}
+.ldio-p0haaj8s20g div:nth-child(1) {
+  transform: translate(148px,80px) scale(1);
+  animation: ldio-p0haaj8s20g-r 0.25s infinite cubic-bezier(0,0.5,0.5,1), ldio-p0haaj8s20g-c 1s infinite step-start;
+}.ldio-p0haaj8s20g div:nth-child(2) {
+  animation-delay: -0.25s;
+}.ldio-p0haaj8s20g div:nth-child(3) {
+  animation-delay: -0.5s;
+}.ldio-p0haaj8s20g div:nth-child(4) {
+  animation-delay: -0.75s;
+}.ldio-p0haaj8s20g div:nth-child(5) {
+  animation-delay: -1s;
+}
+.loadingio-spinner-ellipsis-8q88i3ji3qt {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+}
+.ldio-p0haaj8s20g {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-p0haaj8s20g div { box-sizing: content-box; }
+

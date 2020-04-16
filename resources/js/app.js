@@ -4,9 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
 
-window.Vue = require('vue');
+window.Vue = require("vue");
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,7 +19,10 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component(
+    "vue-csv-uploader",
+    require("./components/CSVUploader.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,44 +31,41 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app',
+    el: "#app"
 });
 
+const darkButton = document.getElementById("dark");
+const lightButton = document.getElementById("light");
+const solarButton = document.getElementById("solar");
+const solarDarkButton = document.getElementById("solarDark");
 
-const darkButton = document.getElementById('dark');
-const lightButton = document.getElementById('light');
-const solarButton = document.getElementById('solar');
-const solarDarkButton = document.getElementById('solarDark');
-
-
-
-function themeSetter(t) { 
-    document.body.classList.remove('light', 'dark', 'solar', 'solarDark');
+function themeSetter(t) {
+    document.body.classList.remove("light", "dark", "solar", "solarDark");
     document.body.classList.add(t);
-    localStorage.setItem('theme', t);
+    localStorage.setItem("theme", t);
 }
 
-(function () {
-    const theme = localStorage.getItem('theme') || 'light';
+(function() {
+    const theme = localStorage.getItem("theme") || "light";
     themeSetter(theme);
 })();
 
-darkButton.onclick = (e) => {
+darkButton.onclick = e => {
     e.preventDefault();
-    themeSetter('dark');
-}
+    themeSetter("dark");
+};
 
-lightButton.onclick = (e) => {
+lightButton.onclick = e => {
     e.preventDefault();
-    themeSetter('light');
-}
+    themeSetter("light");
+};
 
-solarButton.onclick = (e) => {
+solarButton.onclick = e => {
     e.preventDefault();
-    themeSetter('solar');
-}
+    themeSetter("solar");
+};
 
-solarDarkButton.onclick = (e) => {
+solarDarkButton.onclick = e => {
     e.preventDefault();
-    themeSetter('solarDark');
-}
+    themeSetter("solarDark");
+};

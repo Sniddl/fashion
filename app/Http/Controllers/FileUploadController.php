@@ -7,6 +7,8 @@ use App\Facades\URL;
 use App\Rules\ArrayInt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 class FileUploadController extends Controller
 {
@@ -28,10 +30,8 @@ class FileUploadController extends Controller
 
         if ($request->sheets_url) {
             $csv = CSV::fromGoogle(URL::make($request->sheets_url))->parse();
-            return back()->with([
-                "csv" => $csv,
-                "sheets_url" => $request->sheets_url
-            ]);
+            // $csv->rows->prepend($csv->columns);
+            return response()->json(["csv" => $csv, "longestRow" => $csv->getLongestRow()]);
         } else if ($request->csv_file) {
             $path = $request->file('csv_file')->store('csv');
         }
@@ -40,7 +40,7 @@ class FileUploadController extends Controller
     public function CSVStage2(Request $r)
     {
         $r->validate([
-            'rows' => [
+            'row_ids' => [
                 "required",
                 new ArrayInt
             ],
@@ -56,11 +56,9 @@ class FileUploadController extends Controller
                 "nullable"
             ]
         ]);
-        $rows = array_map('intval', $r->rows);
+        $rows = array_map('intval', Str::of($r->row_ids)->explode(',')->all());
         $csv = CSV::fromGoogle(URL::make($r->sheets_url))->include($rows)->parse();
-        return back()->with([
-            "csv" => $csv,
-            "sheets_url" => $r->sheets_url
-        ]);
+        // $csv->rows->prepend($csv->columns);
+        return response()->json(["csv" => $csv, "longestRow" => $csv->getLongestRow()]);
     }
 }
