@@ -2082,28 +2082,73 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+// function localStorageData() {
+//   var obj = { $localStorageDataInjection: "asdf" };
+//   // console.log(obj);
+//   var res = {};
+//   // console.log("setting up local storage", this);
+//   Object.keys(obj).forEach(key => {
+//     res[key] = {
+//       get() {
+//         return obj[key];
+//       },
+//       set() {
+//         console.log("hello there ", this);
+//         console.log("setting data", key);
+//       }
+//     };
+//   });
+//   d
+//   return res;
+// }
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      step: 1,
-      sheets_url: "https://docs.google.com/spreadsheets/d/1BVzVbgptpCN3LQ4vRC8iQHj7QatVcnPStc19CmpHQ4o/edit#gid=0",
+      // sheets_url:
+      //   "https://docs.google.com/spreadsheets/d/1BVzVbgptpCN3LQ4vRC8iQHj7QatVcnPStc19CmpHQ4o/edit#gid=0",
       csv_file: "",
       form: null,
       error: null,
+      // csv1: {},
+      // csv2: {},
+      // title: "Import CSV File",
+      // subtitle: "",
+      loading: true // row_ids: [],
+      // longestRow1: 0,
+      // longestRow2: 0
+
+    };
+  },
+  localStorage: function localStorage() {
+    return {
+      step: 1,
+      sheets_url: "https://docs.google.com/spreadsheets/d/1BVzVbgptpCN3LQ4vRC8iQHj7QatVcnPStc19CmpHQ4o/edit#gid=0",
+      // csv_file: "",
+      // error: null,
       csv1: {},
       csv2: {},
       title: "Import CSV File",
       subtitle: "",
-      loading: true,
+      // loading: true,
       row_ids: [],
       longestRow1: 0,
       longestRow2: 0
     };
   },
+  computed: {
+    something: function something() {
+      return "somethign";
+    }
+  },
   mounted: function mounted() {
     this.loading = false;
   },
   methods: {
+    storeGet: function storeGet(item) {
+      var default_value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      return JSON.parse(localStorage.getItem(item) || JSON.stringify(default_value));
+    },
+    storePut: function storePut(item, value) {},
     proceed: function proceed(count) {
       if (count > 0) {
         if (this["step" + this.step]()) {
@@ -38377,7 +38422,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "absolute left-0 right-0 bottom-0 top-0 flex items-center justify-center bg-white"
+              "absolute left-0 right-0 bottom-0 top-0 flex items-center justify-center bg-white z-10"
           },
           [_vm._m(0)]
         )
@@ -38503,7 +38548,7 @@ var render = function() {
                 style:
                   "grid-template-columns: 1fr repeat(" +
                   _vm.longestRow1 +
-                  ", minmax(20%, auto))"
+                  ", minmax(150px, auto))"
               },
               [
                 _vm._l(_vm.csv1.rows, function(row, row_id) {
@@ -38584,7 +38629,7 @@ var render = function() {
                 style:
                   "grid-template-columns: repeat(" +
                   _vm.longestRow2 +
-                  ", minmax(20%, auto))"
+                  ", minmax(150px, auto))"
               },
               [
                 _vm._l(_vm.csv2.rows, function(row, row_id) {
@@ -50947,6 +50992,12 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -50955,6 +51006,59 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+Vue.use({
+  install: function install(Vue, options) {
+    Vue.prototype.$localStorage = null;
+
+    var ensureRefs = function ensureRefs(vm) {
+      if (!vm.$firestore) {
+        vm.$firestore = Object.create(null);
+      }
+    };
+
+    function localStorageData(vm, obj) {
+      //   var obj = { $localStorageDataInjection: "asdf" };
+      // console.log(obj);
+      var res = {}; // console.log("setting up local storage", this);
+
+      Object.keys(obj).forEach(function (key) {
+        res[key] = {
+          get: function get() {
+            // return vm.$localStorage[key];
+            var $default = JSON.stringify(vm.$localStorage[key]);
+            return JSON.parse(localStorage.getItem(vm.$options._componentTag + '-' + key) || $default);
+          },
+          set: function set(value) {
+            vm.$localStorage[key] = value; // vm.$set(obj, key, value);
+            // obj[key] = value;
+
+            localStorage.setItem(vm.$options._componentTag + '-' + key, JSON.stringify(value));
+          }
+        };
+      });
+      return res;
+    }
+
+    Vue.mixin({
+      beforeCreate: function beforeCreate() {
+        var bindings = this.$options.localStorage;
+        if (typeof bindings === 'function') bindings = bindings.call(this);
+        if (!bindings) return;
+        ensureRefs(this); // for (const key in bindings) {
+        //     console.log(this, key, bindings[key]);
+        // }
+
+        this.$options.computed = Object.assign(this.$options.computed, _objectSpread({}, localStorageData(this, bindings)));
+        console.log(this.$options);
+        this.$localStorage = new Vue({
+          data: function data() {
+            return bindings;
+          }
+        });
+      }
+    });
+  }
+});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -51145,8 +51249,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\code\fashion\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\code\fashion\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\code\fashion\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\code\fashion\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

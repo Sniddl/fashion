@@ -2,7 +2,7 @@
   <div class="relative">
     <div
       v-if="loading"
-      class="absolute left-0 right-0 bottom-0 top-0 flex items-center justify-center bg-white"
+      class="absolute left-0 right-0 bottom-0 top-0 flex items-center justify-center bg-white z-10"
     >
       <div class="loadingio-spinner-ellipsis-8q88i3ji3qt" style="transform: scale(0.5);">
         <div class="ldio-p0haaj8s20g">
@@ -66,7 +66,7 @@
       <div class="grid-wrapper border">
         <div
           class="grid grid-table"
-          :style="`grid-template-columns: 1fr repeat(${longestRow1}, minmax(20%, auto))`"
+          :style="`grid-template-columns: 1fr repeat(${longestRow1}, minmax(150px, auto))`"
         >
           <template v-for="(row, row_id) in csv1.rows">
             <label class="inline-flex items-center bg-white sticky left-0" :key="row_id">
@@ -90,7 +90,7 @@
       <div class="grid-wrapper border">
         <div
           class="grid grid-table"
-          :style="`grid-template-columns: repeat(${longestRow2}, minmax(20%, auto))`"
+          :style="`grid-template-columns: repeat(${longestRow2}, minmax(150px, auto))`"
         >
           <template v-for="(row, row_id) in csv2.rows">
             <div v-for="(item, item_id) in row" :key="row_id + '-' + item_id">
@@ -153,29 +153,77 @@
 </template>
 
 <script>
+// function localStorageData() {
+//   var obj = { $localStorageDataInjection: "asdf" };
+//   // console.log(obj);
+//   var res = {};
+//   // console.log("setting up local storage", this);
+//   Object.keys(obj).forEach(key => {
+
+//     res[key] = {
+//       get() {
+//         return obj[key];
+//       },
+//       set() {
+//         console.log("hello there ", this);
+//         console.log("setting data", key);
+//       }
+//     };
+//   });
+//   d
+//   return res;
+// }
+
 export default {
   data() {
+    return {
+      // sheets_url:
+      //   "https://docs.google.com/spreadsheets/d/1BVzVbgptpCN3LQ4vRC8iQHj7QatVcnPStc19CmpHQ4o/edit#gid=0",
+      csv_file: "",
+      form: null,
+      error: null,
+      // csv1: {},
+      // csv2: {},
+      // title: "Import CSV File",
+      // subtitle: "",
+      loading: true
+      // row_ids: [],
+      // longestRow1: 0,
+      // longestRow2: 0
+    };
+  },
+  localStorage() {
     return {
       step: 1,
       sheets_url:
         "https://docs.google.com/spreadsheets/d/1BVzVbgptpCN3LQ4vRC8iQHj7QatVcnPStc19CmpHQ4o/edit#gid=0",
-      csv_file: "",
-      form: null,
-      error: null,
+      // csv_file: "",
+      // error: null,
       csv1: {},
       csv2: {},
       title: "Import CSV File",
       subtitle: "",
-      loading: true,
+      // loading: true,
       row_ids: [],
       longestRow1: 0,
       longestRow2: 0
     };
   },
+  computed: {
+    something() {
+      return "somethign";
+    }
+  },
   mounted() {
     this.loading = false;
   },
   methods: {
+    storeGet(item, default_value = null) {
+      return JSON.parse(
+        localStorage.getItem(item) || JSON.stringify(default_value)
+      );
+    },
+    storePut(item, value) {},
     proceed(count) {
       if (count > 0) {
         if (this["step" + this.step]()) {

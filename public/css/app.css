@@ -14317,10 +14317,8 @@ video {
 }
 
 .grid-wrapper {
-  overflow: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  background: linear-gradient(var(--white) 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), var(--white) 70%) 0 100%, radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 0 100%;
+  overflow: auto;
+  background: linear-gradient(var(--white) 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), var(--white) 70%) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 0 100%;
   --scroll-overlay: var(--white);
   --scroll-shadow-size: 24px;
   --scroll-shadow: rgba(0, 0, 0, 0.2);
@@ -14331,14 +14329,6 @@ video {
   background-position-x: left, right, center, center, calc(0% - 7px), calc(100% + 7px), center, center;
   background-position-y: center, center, top, bottom, center, center, calc(0% - 7px), calc(100% + 7px);
   background-attachment: local, local, local, local, scroll, scroll, scroll, scroll;
-}
-
-.grid-wrapper:hover {
-  overflow: auto;
-}
-
-.grid-wrapper ::-webkit-scrollbar {
-  display: none;
 }
 
 .grid-table {

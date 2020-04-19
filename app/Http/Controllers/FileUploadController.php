@@ -61,4 +61,34 @@ class FileUploadController extends Controller
         // $csv->rows->prepend($csv->columns);
         return response()->json(["csv" => $csv, "longestRow" => $csv->getLongestRow()]);
     }
+
+    public function CSVStage3(Request $r)
+    {
+        $r->validate([
+            'row_ids' => [
+                "required",
+                new ArrayInt
+            ],
+            'sheets_url' => [
+                "required_without:csv_file",
+                "url",
+                "nullable"
+            ],
+            "csv_file" => [
+                'file',
+                "mimes:csv,txt",
+                "required_without:sheets_url",
+                "nullable"
+            ]
+        ]);
+        $rows = array_map('intval', Str::of($r->row_ids)->explode(',')->all());
+        $csv = CSV::fromGoogle(URL::make($r->sheets_url))->include($rows)->parse();
+        $data = [];
+        foreach ($csv->columns as $column) {
+            $data[$column] = $csv->get($column);
+        }
+        dd($data);
+        // $csv->rows->prepend($csv->columns);
+        return response()->json(["csv" => $csv]);
+    }
 }

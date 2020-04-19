@@ -1,0 +1,12 @@
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 796 967">
+  <defs>
+    <linearGradient id="linear-gradient" x1="311.75" y1="534.58" x2="61.65" y2="684.43" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6c63ff"/>
+      <stop offset="0.23" stop-color="#6c56fc"/>
+      <stop offset="0.67" stop-color="#6c33f5"/>
+      <stop offset="1" stop-color="#6c14ee"/>
+    </linearGradient>
+  </defs>
+  <title>wave</title>
+  <path d="M-1,0S161,426,405,492c267.71,72.41,366,255,390,475H-1Z" transform="translate(1)" style="fill: url(#linear-gradient)"/>
+</svg>

@@ -96,21 +96,19 @@
 @tailwind utilities;
 
 .grid-wrapper {
-    overflow: hidden;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    overflow: auto;
+    // -ms-overflow-style: none;
+    // scrollbar-width: none;
 
     background: linear-gradient(var(--white) 30%, rgba(255, 255, 255, 0)),
         linear-gradient(rgba(255, 255, 255, 0), var(--white) 70%) 0 100%,
         radial-gradient(
-            50% 0,
-            farthest-side,
+            farthest-side at 50% 0,
             rgba(0, 0, 0, 0.2),
             rgba(0, 0, 0, 0)
         ),
         radial-gradient(
-                50% 100%,
-                farthest-side,
+                farthest-side at 50% 100%,
                 rgba(0, 0, 0, 0.2),
                 rgba(0, 0, 0, 0)
             )
@@ -162,13 +160,13 @@
     background-attachment: local, local, local, local, scroll, scroll, scroll,
         scroll;
 
-    &:hover {
-        overflow: auto;
-    }
+    // &:hover, &:focus {
+    //     overflow: auto;
+    // }
 
-    ::-webkit-scrollbar {
-        display: none;
-    }
+    // ::-webkit-scrollbar {
+    //     display: none;
+    // }
 }
 
 .grid-table {

@@ -8,6 +8,65 @@ require("./bootstrap");
 
 window.Vue = require("vue");
 
+Vue.use({
+    install(Vue, options) {
+        Vue.prototype.$localStorage = null;
+        const ensureRefs = vm => {
+            if (!vm.$firestore) {
+                vm.$firestore = Object.create(null);
+            }
+        };
+
+        function localStorageData(vm, obj) {
+            //   var obj = { $localStorageDataInjection: "asdf" };
+            // console.log(obj);
+            var res = {};
+            // console.log("setting up local storage", this);
+            Object.keys(obj).forEach(key => {
+
+                res[key] = {
+                    get() {
+                        // return vm.$localStorage[key];
+                        var $default = JSON.stringify(vm.$localStorage[key]);
+                        return JSON.parse(localStorage.getItem(vm.$options._componentTag + '-' + key) || $default);
+                    },
+                    set(value) {
+                        vm.$localStorage[key] = value;
+                        // vm.$set(obj, key, value);
+                        // obj[key] = value;
+                        localStorage.setItem(vm.$options._componentTag + '-' + key, JSON.stringify(value))
+                    }
+                };
+            });
+
+            return res;
+        }
+
+        Vue.mixin({
+            beforeCreate() {
+                let bindings = this.$options.localStorage;
+                if (typeof bindings === 'function') bindings = bindings.call(this);
+                if (!bindings) return;
+                ensureRefs(this);
+                // for (const key in bindings) {
+                //     console.log(this, key, bindings[key]);
+                // }
+                this.$options.computed = Object.assign(this.$options.computed, {
+                    ...localStorageData(this, bindings)
+                })
+                console.log(this.$options)
+
+                this.$localStorage = new Vue({
+                    data() {
+                        return bindings;
+                    },
+                })
+
+            },
+        });
+    }
+})
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -45,7 +104,7 @@ function themeSetter(t) {
     localStorage.setItem("theme", t);
 }
 
-(function() {
+(function () {
     const theme = localStorage.getItem("theme") || "light";
     themeSetter(theme);
 })();
