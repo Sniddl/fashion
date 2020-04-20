@@ -16,7 +16,10 @@ module.exports = {
 
                 white: "var(--white)",
                 black: "var(--black)"
-            }
+            },
+            zIndex: {
+                '-1': '-1',
+            },
         }
     },
     variants: {},
