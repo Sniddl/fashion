@@ -30,20 +30,28 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="content" id="app">
                 <div class="title m-b-md">
                     FASHION
                 </div>
+                <div>
+                    <button @click="testing = !testing" class="p-3 border">click</button>
+                </div>
 
+                <div class="p-3 bg-blue-300 w-1/5 overflow-hidden">
+                    <vue-transition-slide direction="right" duration="600">
+                        <div class="slide-item p-3 m-2 border" v-if="testing" :key="1">A</div>
+                        <div class="slide-item p-3 m-2 border" v-if="!testing" :key="2">B</div>
+                    </vue-transition-slide>
+                </div>
+
+                <div class="p-3 bg-blue-300 w-1/5 overflow-hidden">
+                    <vue-transition-slide direction="left">
+                        <div class="slide-item p-3 m-2 border" v-if="testing" :key="1">C</div>
+                        <div class="slide-item p-3 m-2 border" v-if="!testing" :key="2">D</div>
+                    </vue-transition-slide>
+                </div>
                 
-
-                <form action="/upload/csv" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <input type="file" name="csv" id="csv">
-                    <x-button type="submit" bgColor="blue" class="p-0">Submit</x-button>
-                </form>
-
-                <x-button role="link" bgColor="blue">Click here</x-button>
             </div>
         </div>
     </body>

@@ -18,22 +18,16 @@ Vue.use({
         };
 
         function localStorageData(vm, obj) {
-            //   var obj = { $localStorageDataInjection: "asdf" };
-            // console.log(obj);
             var res = {};
-            // console.log("setting up local storage", this);
             Object.keys(obj).forEach(key => {
 
                 res[key] = {
                     get() {
-                        // return vm.$localStorage[key];
                         var $default = JSON.stringify(vm.$localStorage[key]);
                         return JSON.parse(localStorage.getItem(vm.$options._componentTag + '-' + key) || $default);
                     },
                     set(value) {
                         vm.$localStorage[key] = value;
-                        // vm.$set(obj, key, value);
-                        // obj[key] = value;
                         localStorage.setItem(vm.$options._componentTag + '-' + key, JSON.stringify(value))
                     }
                 };
@@ -48,9 +42,6 @@ Vue.use({
                 if (typeof bindings === 'function') bindings = bindings.call(this);
                 if (!bindings) return;
                 ensureRefs(this);
-                // for (const key in bindings) {
-                //     console.log(this, key, bindings[key]);
-                // }
                 this.$options.computed = Object.assign(this.$options.computed, {
                     ...localStorageData(this, bindings)
                 })
@@ -83,6 +74,16 @@ Vue.component(
     require("./components/CSVUploader.vue").default
 );
 
+Vue.component(
+    "vue-transition-slide",
+    require("./components/TransitionSlide.vue").default
+);
+
+Vue.component(
+    "vue-loading-ellipsis",
+    require("./components/LoadingEllipsis.vue").default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -90,7 +91,10 @@ Vue.component(
  */
 
 const app = new Vue({
-    el: "#app"
+    el: "#app",
+    data: {
+        testing: true,
+    }
 });
 
 const darkButton = document.getElementById("dark");

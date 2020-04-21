@@ -87,8 +87,6 @@ class FileUploadController extends Controller
         foreach ($csv->columns as $column) {
             $data[$column] = $csv->get($column);
         }
-        dd($data);
-        // $csv->rows->prepend($csv->columns);
-        return response()->json(["csv" => $csv]);
+        return response()->json(["data" => $data, "fields" => ["Size", "Color", "Image", "Name"]]);
     }
 }
