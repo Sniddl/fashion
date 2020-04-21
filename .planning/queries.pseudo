@@ -1,0 +1,31 @@
+
+/*
+    Each merchant will have a predefined webscraping function
+    When ran, the scraper will get important information like,
+    price, name, images, ratings, comments, etc.
+
+    -This function will run periodically to maintain fresh data.
+*/
+runWebScraper(merchant, url):
+    webScraperLookup(merchant).run(url)
+
+
+/*
+    To update the price, the web scraper will run for fresh data.
+    The data will be added to a table that stores the price history.
+    If the price is recent and lower, 
+        then it will update the product price directly and the pivot table.
+    The price history and price of the product are seperate for query speeds.
+    Price history will be displayed as a chart that must be requested.
+*/
+updatePrice(merchant, product):
+    data = runWebScraper(merchant, product.url)
+    pivot = findMerchantProductPivotRow(merchant.id, product.id)
+    insertPriceIntoHistory(pivot.id, data.price)
+
+    if data.price < product.price && product.update_at < ONE_DAY:
+        product.price = data.price
+    
+    if data.price < privot.price && pivot.updated_at < ONE_DAY;
+        pivot.price = data.price
+
