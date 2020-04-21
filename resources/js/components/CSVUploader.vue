@@ -259,7 +259,7 @@ export default {
       });
 
       try {
-        var res = await axios.post("/upload/csv1", this.form);
+        var res = await axios.post("/csv/stage-1", this.form);
         this.csv1 = res.data.csv;
         this.longestRow1 = res.data.longestRow;
         this.row_ids = this.csv1.rows.map((x, i) => i);
@@ -280,7 +280,7 @@ export default {
       });
 
       try {
-        var res = await axios.post("/upload/csv2", this.form);
+        var res = await axios.post("/csv/stage-2", this.form);
         this.csv2 = res.data.csv;
         this.longestRow2 = res.data.longestRow;
       } catch (err) {
@@ -300,7 +300,7 @@ export default {
       });
 
       try {
-        var res = await axios.post("/upload/csv3", this.form);
+        var res = await axios.post("/csv/stage-3", this.form);
         this.fields = res.data.fields;
         this.final_columns = res.data.data;
         console.log(res.data.data);

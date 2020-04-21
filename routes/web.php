@@ -20,12 +20,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
-Route::post('/upload/csv1', 'FileUploadController@CSVStage1');
-Route::post('/upload/csv2', 'FileUploadController@CSVStage2');
-Route::post('/upload/csv3', 'FileUploadController@CSVStage3');
+Route::prefix('csv')->name('csv.')->group(function () {
+    Route::post('/stage-1', 'CSVController@CSVStage1')->name('1');
+    Route::post('/stage-2', 'CSVController@CSVStage2')->name('2');
+    Route::post('/stage-3', 'CSVController@CSVStage3')->name('3');
+});
 
-Route::get('/upload', 'UploadController@index')->name('upload');
 
-Route::get('/test', 'TestController@index')->name('test');
+Route::get('/upload', 'UploadController@index');
+
+Route::get('/test', 'TestController@index');

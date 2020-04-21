@@ -2221,7 +2221,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context2.prev = 3;
                 _context2.next = 6;
-                return axios.post("/upload/csv1", _this3.form);
+                return axios.post("/csv/stage-1", _this3.form);
 
               case 6:
                 res = _context2.sent;
@@ -2271,7 +2271,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context3.prev = 3;
                 _context3.next = 6;
-                return axios.post("/upload/csv2", _this4.form);
+                return axios.post("/csv/stage-2", _this4.form);
 
               case 6:
                 res = _context3.sent;
@@ -2318,7 +2318,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context4.prev = 3;
                 _context4.next = 6;
-                return axios.post("/upload/csv3", _this5.form);
+                return axios.post("/csv/stage-3", _this5.form);
 
               case 6:
                 res = _context4.sent;
