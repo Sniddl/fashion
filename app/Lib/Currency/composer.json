@@ -1,0 +1,25 @@
+{
+    "name": "fashion/currency",
+    "description": "a currency exchange rate library",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Currency\\": "src/"
+        },
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Currency\\CurrencyServiceProvider"
+            ],
+            "aliases": {
+                "Currency": "Currency\\Currency"
+            }
+        }
+    }
+}

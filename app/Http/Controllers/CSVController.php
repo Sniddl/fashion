@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 
-class FileUploadController extends Controller
+class CSVController extends Controller
 {
     public function CSVStage1(Request $request)
     {
