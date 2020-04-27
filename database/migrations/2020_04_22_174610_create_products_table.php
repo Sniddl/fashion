@@ -18,11 +18,12 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->string('name');
             $table->string('cover_image')->nullable();
-            $table->integer('quantity');
-            $table->boolean('available');
-            $table->enum('currency', config('currencies'));
-            $table->longText('description');
-            $table->longText('scout_comment');
+            $table->integer('quantity')->nullable();
+            $table->boolean('available')->default(true);
+            $table->string('currency')->index();
+            $table->integer('price')->unsigned();
+            $table->longText('description')->nullable();
+            $table->longText('scout_comment')->nullable();
 
             /* many-to-many */
             // - sizes

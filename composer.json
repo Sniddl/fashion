@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4.0",
+        "cviebrock/eloquent-sluggable": "^7.0",
         "fashion/currency": "9999999-dev",
         "fideloper/proxy": "^4.2",
         "florianv/laravel-swap": "^2.1",

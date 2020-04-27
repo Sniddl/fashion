@@ -38,6 +38,9 @@
                     <button @click="testing = !testing" class="p-3 border">click</button>
                 </div>
 
+
+                <h1>Money: {{ money(5.129) }}</h1>
+
                 <div class="p-3 bg-blue-300 w-1/5 overflow-hidden">
                     <vue-transition-slide direction="right" duration="600">
                         <div class="slide-item p-3 m-2 border" v-if="testing" :key="1">A</div>

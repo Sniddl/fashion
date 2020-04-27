@@ -27,7 +27,7 @@ class CSVTest extends TestCase
         $file = UploadedFile::fake()
             ->createWithContent('file.csv', "name,title,desc\nlorem,ipsum,dolor color");
 
-        $response = $this->post('/upload/csv1', [
+        $response = $this->post(route('csv.1'), [
             'csv_file' => $file,
         ]);
 
