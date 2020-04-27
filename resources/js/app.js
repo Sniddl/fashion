@@ -84,6 +84,16 @@ Vue.component(
     require("./components/LoadingEllipsis.vue").default
 );
 
+Vue.component(
+    "vue-login-component",
+    require("./components/loginComponent.vue").default
+);
+
+Vue.component(
+    "vue-login-background",
+    require("./components/loginBackground.vue").default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

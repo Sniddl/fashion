@@ -22,7 +22,7 @@
     {{-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-gray-100 text-black">
+<body class="{{ $mainBgColor ?? "bg-gray-100" }} text-black">
     <div id="app">
         <header class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
             <div class="flex-1 flex justify-between items-center">
@@ -38,8 +38,9 @@
             <nav>
               <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
                 <li><a id="light" class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">Light</a></li>
-                <li><a id="dark" class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">Dark</a></li>
                 <li><a id="solar" class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">Solar</a></li>
+                <li><a id="color" class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">Color</a></li>
+                <li><a id="dark" class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">Dark</a></li>
                 <li><a id="solarDark" class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2" href="#">Solar Dark</a></li>
               </ul>
             </nav>

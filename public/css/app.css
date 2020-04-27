@@ -78,6 +78,18 @@
   --white: #00171d;
 }
 
+.color {
+  --black: #ffe6dd;
+  --gray-700: #fbcbc2;
+  --gray-600: #d8afb6;
+  --gray-500: #c7a1b1;
+  --gray-400: #876fa4;
+  --gray-300: #54479a;
+  --gray-200: #403795;
+  --gray-100: #2e2990;
+  --white: #181787;
+}
+
 .light.theme-reset,
 .light .theme-reset,
 .dark.theme-reset,
