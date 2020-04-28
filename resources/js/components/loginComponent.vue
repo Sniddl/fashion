@@ -4,7 +4,7 @@
             <h2 class="font-bold text-indigo-600 text-3xl text-center italic">Fashion</h2>
         </div>
         <div class="w-full max-w-xs mx-auto">
-            <form class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4">
+            <form class="bg-white shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
                 <div class="mb-4">
                     <h1 class="pb-2 text-md">Sign into your account</h1>
                     <label class="block text-gray-700 text-sm mb-2" for="email">
