@@ -171,6 +171,7 @@
 
 <script>
 export default {
+  name: "csv-uploader",
   data() {
     return {
       csv_file: "",

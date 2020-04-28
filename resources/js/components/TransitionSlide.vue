@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  name: "transition-slide",
   props: {
     direction: {
       default: "right"
