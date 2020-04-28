@@ -41,3 +41,9 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+  name: "signup-component"
+};
+</script>
