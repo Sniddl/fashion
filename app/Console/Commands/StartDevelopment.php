@@ -94,8 +94,9 @@ class StartDevelopment extends Command
         $this->generateEnvKey();
         $this->migrateTables();
 
+        $this->bg("Installing NPM dependencies", "Stopped watching assets", ['npm', 'install']);
         $this->bg("Starting web server on localhost:8000", "Stopped web server", ['php', 'artisan', 'serve', '--host=0.0.0.0:8000']);
-        $this->bg("Compiling and watching assets", "Stopped watching assets", ['npm', 'run', 'watch']);
+        $this->bg("Compiling and watching assets", "Stopped watching assets", ['npm', 'run', 'hot']);
 
         while ($this->run) {
         } // infinite loop DON'T DELETE

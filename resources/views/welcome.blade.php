@@ -12,7 +12,7 @@
         <!-- Styles -->
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
-        <script src="/js/app.js" defer></script>
+        <script src="{{ mix('js/app.js') }}" crossorigin="anonymous" defer></script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">

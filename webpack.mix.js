@@ -1,5 +1,7 @@
 const mix = require("laravel-mix");
 const tailwindcss = require("tailwindcss");
+// const progress = require('progress-bar-webpack-plugin');
+// const ErrorOverlay = require('error-overlay-webpack-plugin');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,11 +13,27 @@ const tailwindcss = require("tailwindcss");
  |
  */
 
-mix.js("resources/js/app.js", "public/js")
-    .sourceMaps();;
+// const ip = require('ip').address() || 'localhost';
 
-mix.sass("resources/sass/app.scss", "public/css").options({
-    processCssUrls: false,
-    postCss: [tailwindcss("tailwind.config.js")]
-})
-    .sourceMaps();;
+mix.js("resources/js/app.js", "public/js")
+
+    .sass("resources/sass/app.scss", "public/css")
+    .options({
+        processCssUrls: false,
+        postCss: [tailwindcss("tailwind.config.js")]
+    })
+    .sourceMaps()
+    .webpackConfig({
+        // plugins: [
+        //     require('progress-bar-webpack-plugin')(),
+        //     new ErrorOverlay()
+        // ],
+        devServer: {
+            overlay: true,
+            open: true,
+            openPage: 'http://localhost:8000',
+        }
+    })
+    // .browserSync(ip + ':8000')
+
+
