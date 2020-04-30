@@ -39,7 +39,7 @@
                 </div>
 
 
-                <h1>Money: {{ money(5.129) }}</h1>
+                <h1>Money: {{ money(5.129, "usd")-> to("cny") }}</h1>
 
                 <div class="p-3 bg-blue-300 w-1/5 overflow-hidden">
                     <vue-transition-slide direction="right" duration="600">

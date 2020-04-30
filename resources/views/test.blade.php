@@ -11,6 +11,7 @@
         <x-product-card class="w-1/3 p-2"></x-product-card>
         <x-product-card class="w-1/3 p-2"></x-product-card>
         {{-- @endfor --}}
+        <vue-price-alert></vue-price-alert>
     </div>
     
     
