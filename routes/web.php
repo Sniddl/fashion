@@ -32,3 +32,5 @@ Route::prefix('csv')->name('csv.')->group(function () {
 Route::get('/upload', 'UploadController@index');
 
 Route::get('/test', 'TestController@index');
+
+Route::get('/guide', 'GuideController@index');
