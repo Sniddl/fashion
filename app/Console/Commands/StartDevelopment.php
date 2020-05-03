@@ -96,20 +96,33 @@ class StartDevelopment extends Command
 
         $this->bg("Installing NPM dependencies", "Stopped watching assets", ['npm', 'install']);
         $this->bg("Starting web server on localhost:8000", "Stopped web server", ['php', 'artisan', 'serve', '--host=0.0.0.0:8000']);
-        $this->bg("Compiling and watching assets", "Stopped watching assets", ['npm', 'run', 'hot']);
+        $this->bg("Compiling and watching assets. Your web browser should open shortly.", "Stopped watching assets", ['npm', 'run', 'hot']);
 
         while ($this->run) {
+            try {
+                $cmd = $this->ask('What now? Run some commands here.');
+                if ($cmd) {
+                    $process = new Process(explode(" ", $cmd));
+                    $process->run(function ($type, $buffer) {
+                        echo $buffer;
+                    });
+                }
+            } catch (\Exception $err) {
+                echo "";
+            }
         } // infinite loop DON'T DELETE
+
+
     }
 
     public function shutdown()
     {
-        $this->warn('Gracefully stopping development...');
-
+        $this->warn("\nGracefully stopping development...");
         foreach ($this->background_processes as $bg) {
             $bg['process']->stop();
             $this->info($bg['stop_output']);
         }
         $this->run = false;
+        $this->warn("BYE!");
     }
 }
