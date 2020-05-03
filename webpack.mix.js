@@ -13,7 +13,7 @@ const tailwindcss = require("tailwindcss");
  |
  */
 
-// const ip = require('ip').address() || 'localhost';
+const ip = require('ip').address() || 'localhost';
 
 mix.js("resources/js/app.js", "public/js")
 
@@ -30,10 +30,10 @@ mix.js("resources/js/app.js", "public/js")
         // ],
         devServer: {
             overlay: true,
-            open: true,
-            openPage: 'http://localhost:8000',
+            // open: true,
+            // openPage: 'http://localhost:8000',
         }
     })
-    // .browserSync(ip + ':8000')
+    .browserSync(ip + ':8000')
 
 
