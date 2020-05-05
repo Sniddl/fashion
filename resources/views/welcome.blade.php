@@ -7,7 +7,9 @@
         <title>FASHION</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/8c17ca260b.js" crossorigin="anonymous" defer></script>
 
         <!-- Styles -->
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
@@ -53,6 +55,10 @@
                         <div class="slide-item p-3 m-2 border" v-if="testing" :key="1">C</div>
                         <div class="slide-item p-3 m-2 border" v-if="!testing" :key="2">D</div>
                     </vue-transition-slide>
+                </div>
+
+                <div>
+                    <vue-loading></vue-loading>
                 </div>
                 
             </div>
